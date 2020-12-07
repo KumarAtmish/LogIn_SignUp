@@ -1,9 +1,9 @@
 import React from "react";
+import "./styles.css";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { adminPassword } from "./validation";
-import "./styles.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export default class Login extends React.Component {
   state = {
@@ -29,9 +29,11 @@ export default class Login extends React.Component {
         alert("correct");
       else alert("wrong");
     }
+    this.setState({ redirect: true });
   };
 
   render() {
+    if (this.state.redirect) return <Redirect to="/home" />;
     return (
       <>
         <div className="container">
