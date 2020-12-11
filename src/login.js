@@ -20,16 +20,20 @@ export default class Login extends React.Component {
   };
 
   handleSubmit = (e) => {
+    e.preventDefault();
     const { name, password } = this.state;
     console.log(this.state);
+
     if (name === "" && password === "")
-      alert("name and passeord can not be null");
+      alert("name and password can not be null");
     else {
-      if (name === adminPassword.name && password === adminPassword.password)
-        alert("correct");
-      else alert("wrong");
+      if (name === adminPassword.name && password === adminPassword.password) {
+        //alert("correct");
+        this.setState({ redirect: true });
+      } else {
+        alert("name and Password is not correct");
+      }
     }
-    this.setState({ redirect: true });
   };
 
   render() {
